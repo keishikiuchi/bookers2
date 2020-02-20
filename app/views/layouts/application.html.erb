@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookers2</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+<body> 
+
+<div class="row">
+<nav class="navbar navbar-inverse">
+<div class="col-sm-4">
+<p class="text-white">
+<p class="navbar-text navbar-left"><h3>Bookers</h3></p>
+</p>
+</div>
+
+<div class="col-sm-8">
+<ul class="nav navbar-nav navbar-right">
+    <% if user_signed_in? %>
+    <span class="glyphicon glyphicon-home" aria-hidden="true"></span><%= link_to "Home", user_path(current_user) %>
+    <span class="glyphicon glyphicon-user" aria-hidden="true"></span><%= link_to "Users",users_path %>
+    <span class="glyphicon glyphicon-book" aria-hidden="true"></span><%= link_to "Books", books_path %>
+    <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span><%= link_to "logout", destroy_user_session_path, method: :delete %>
+    <% else %>
+    <span class="glyphicon glyphicon-home" aria-hidden="true"></span><%= link_to "Home", root_path %>
+    <span class="glyphicon glyphicon-link" aria-hidden="true"></span><%= link_to "About", home_about_path %>
+    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span><%= link_to "Sign up", new_user_registration_path %>
+    <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span><%= link_to "log in", new_user_session_path %>
+    <% end %>
+
+</nav>
+</ul>
+</div>
+</div>
+<p><%= yield %></p>
+
+</body>
+
+</html>
