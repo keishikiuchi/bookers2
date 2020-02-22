@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 before_action :authenticate_user!
+before_action :correct_user, only: [:edit, :update]
 
   def index
   	@book = Book.new
@@ -19,7 +20,7 @@ before_action :authenticate_user!
   	redirect_to user_path(@book.id), :notice => 'You have creatad book successfully.'
     else
       render template: "book/index"
-  end
+    end
   end
 
   def edit
@@ -30,8 +31,11 @@ before_action :authenticate_user!
     @user = User.find(params[:id])
     if @user.update(user_params)
     redirect_to user_path, :notice => 'You have updated user successfully.'
+    else
+    render action: :edit
+    end
   end
-  end
+
 
 
 private
@@ -42,5 +46,12 @@ private
 
   def user_params
     params.require(:user).permit(:name, :introduction, :profile_image)
+  end
+
+  def correct_user
+    user = User.find(params[:id])
+    if current_user != user
+    redirect_to user_path(current_user)
+  end
   end
 end

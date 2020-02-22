@@ -10,8 +10,11 @@
 </p>
 
 <% if current_user %>
-<p><%= link_to "プロフィール編集", edit_user_path(current_user) %></p>
-
+<%= link_to edit_user_path(current_user) do %>
+<div class="panel panel-default">
+  <div class="panel-body"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></div>
+</div>
+<% end %>
 <% end %>
 
 <h1>New book</h1>

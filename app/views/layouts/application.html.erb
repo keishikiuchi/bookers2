@@ -10,34 +10,40 @@
   </head>
 
 <body> 
-
+<nav class="navbar">
+<div class="container">
 <div class="row">
-<nav class="navbar navbar-inverse">
-<div class="col-sm-4">
-<p class="text-white">
+<div class="col-sm-3">
+<p class= "text">
 <p class="navbar-text navbar-left"><h3>Bookers</h3></p>
 </p>
 </div>
 
-<div class="col-sm-8">
-<ul class="nav navbar-nav navbar-right">
+<div class="col-sm-9">
+<p class="text-muted">
+<p class="nav navbar-nav navbar-right">
+
     <% if user_signed_in? %>
     <span class="glyphicon glyphicon-home" aria-hidden="true"></span><%= link_to "Home", user_path(current_user) %>
     <span class="glyphicon glyphicon-user" aria-hidden="true"></span><%= link_to "Users",users_path %>
     <span class="glyphicon glyphicon-book" aria-hidden="true"></span><%= link_to "Books", books_path %>
-    <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span><%= link_to "logout", destroy_user_session_path, method: :delete %>
+    <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span><%= link_to "logout", destroy_user_session_path, method: :delete %></li>
     <% else %>
     <span class="glyphicon glyphicon-home" aria-hidden="true"></span><%= link_to "Home", root_path %>
     <span class="glyphicon glyphicon-link" aria-hidden="true"></span><%= link_to "About", home_about_path %>
-    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span><%= link_to "Sign up", new_user_registration_path %>
-    <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span><%= link_to "log in", new_user_session_path %>
+    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span><%= link_to "sign up", new_user_registration_path %>
+    <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span><%= link_to "login", new_user_session_path %>
     <% end %>
 
+</div>
+</p>
+</p>
+</p>
+</div>
+</div>
 </nav>
-</ul>
-</div>
-</div>
-<p><%= yield %></p>
+<p>
+<%= yield %></p>
 
 </body>
 

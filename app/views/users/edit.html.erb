@@ -4,6 +4,14 @@
 
 <h1>User info</h1>
 
+<% if @user.errors.any? %>
+<h2><%= @user.errors.count %> error prohibited this obj from being saved:</h2>
+<ul>
+	<%= @user.errors.full_messages.each do |message| %>
+</ul>
+<% end %>
+<% end %>
+
 <%= form_for(@user) do |f| %>
 
 <h4>Name</h4>
