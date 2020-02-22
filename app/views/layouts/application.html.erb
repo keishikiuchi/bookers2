@@ -1,49 +1,70 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Bookers2</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Bookers2</title>
+        <%= csrf_meta_tags %>
+        <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    </head>
 
-<body> 
-<nav class="navbar">
-<div class="container">
-<div class="row">
-<div class="col-sm-3">
-<p class= "text">
-<p class="navbar-text navbar-left"><h3>Bookers</h3></p>
-</p>
-</div>
+    <body> 
+        <div class="navbar-header">
+            <nav class="navbar navbar-inverse navbar-fixed-top" >
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h3>Bookers</h3>
 
-<div class="col-sm-9">
-<p class="text-muted">
-<p class="nav navbar-nav navbar-right">
+                        </div>
 
-    <% if user_signed_in? %>
-    <span class="glyphicon glyphicon-home" aria-hidden="true"></span><%= link_to "Home", user_path(current_user) %>
-    <span class="glyphicon glyphicon-user" aria-hidden="true"></span><%= link_to "Users",users_path %>
-    <span class="glyphicon glyphicon-book" aria-hidden="true"></span><%= link_to "Books", books_path %>
-    <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span><%= link_to "logout", destroy_user_session_path, method: :delete %></li>
-    <% else %>
-    <span class="glyphicon glyphicon-home" aria-hidden="true"></span><%= link_to "Home", root_path %>
-    <span class="glyphicon glyphicon-link" aria-hidden="true"></span><%= link_to "About", home_about_path %>
-    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span><%= link_to "sign up", new_user_registration_path %>
-    <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span><%= link_to "login", new_user_session_path %>
-    <% end %>
+                        <div class="col-sm-9">
+                            <p class="text-muted">
+                                <p class="nav navbar-nav navbar-right">
 
-</div>
-</p>
-</p>
-</p>
-</div>
-</div>
-</nav>
-<p>
-<%= yield %></p>
+                                    <% if user_signed_in? %>
+
+                                    <%= link_to user_path(current_user) do %>
+                                    <span class="glyphicon glyphicon-home" aria-hidden="true">Home</span>
+                                    <% end %>
+                                    <%= link_to users_path do %>
+                                    <span class="glyphicon glyphicon-user" aria-hidden="true">Users</span>
+                                    <% end %>
+                                    <%= link_to books_path do %>
+                                    <span class="glyphicon glyphicon-book" aria-hidden="true">Books</span>
+                                    <% end %>
+                                    <%= link_to destroy_user_session_path, method: :delete do %>
+                                    <span class="glyphicon glyphicon-log-out" aria-hidden="true">logout</span>
+                                    <% end %>
+
+                                    <% else %>
+                                    <%= link_to root_path do %>
+                                    <span class="glyphicon glyphicon-home" aria-hidden="true">Home</span>
+                                    <% end %>
+                                    <%= link_to home_about_path do %>
+                                    <span class="glyphicon glyphicon-link" aria-hidden="true">About</span>
+                                    <% end %>
+                                    <%= link_to new_user_registration_path do %>
+                                    <span class="glyphicon glyphicon-link" aria-hidden="true">sign up</span>
+                                    <% end %>
+                                    <%= link_to new_user_session_path do %>
+                                    <span class="glyphicon glyphicon-log-in" aria-hidden="true" aria-hidden="true">login</span>
+                                    <% end %>
+                                    <% end %>
+
+                                </div>
+                            </p>
+                        </p>
+                    </p>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <p>
+        <%= yield %>
+        
+    </p>
 
 </body>
 
